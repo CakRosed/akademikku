@@ -19,7 +19,11 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{
-		$this->load->view('templete');
+	{	//pemanggilan tampa librarie
+		// $this->load->view('templete');
+
+		// pemanggilan dengan librarie template
+		$this->template->load('template', 'siswa_list');
+
 	}
 }

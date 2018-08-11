@@ -35,14 +35,14 @@
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
     <link href="http://www.cliptheme.com/preview/cliponeV2/Admin/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
-        <script type="text/javascript" src="http://www.cliptheme.com/preview/cliponeV2/Admin/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </head>
 
 <body>
 
+  <div class="navbar navbar-inverse navbar-fixed-top">
     <!-- start: HEADER -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
         <!-- start: TOP NAVIGATION CONTAINER -->
         <div class="container">
             <div class="navbar-header">
@@ -431,13 +431,13 @@
                 <!-- end: MAIN MENU TOGGLER BUTTON -->
                 <!-- start: MAIN NAVIGATION MENU -->
                 <ul class="main-navigation-menu">
-                    
+
                     <!-- start navbar dinamis -->
 
-                    <?php 
+                    <?php
                     $main_menu = $this->db->get_where('tabel_menu', array('is_main_menu'=>0))->result();
                     foreach($main_menu as $main){
-                        // deklarasikan submenu 
+                        // deklarasikan submenu
                         $submenu = $this->db->get_where('tabel_menu', array('is_main_menu'=>$main->id));
                         // cek apakah ada submenu?
                         if ($submenu->num_rows() >0) {
@@ -449,9 +449,9 @@
                             <span class='selected'></span>
                             </a>
                             <ul class='sub-menu'>";
-                            
+
                             foreach($submenu->result() as $sub){
-                                echo "<li>".anchor($sub->link,"<i class='".$sub->icon."'></i> ".strtoupper($sub->nama_menu))." </li>";
+                                echo "<li>".anchor($sub->link,"<i class='".$sub->icon."'></i><span class='title'> ".strtoupper($sub->nama_menu))." </span></li><span class='selected'></span>";
                             }
 
                             echo "</ul>
@@ -623,7 +623,7 @@
                 <!-- end: PAGE HEADER -->
                 <!-- start: PAGE CONTENT -->
                 <div class="row">
-                    
+
 
 
                     <?php echo $contents ?>
